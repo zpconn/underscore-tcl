@@ -401,6 +401,11 @@ namespace eval _ {
         }
     }
 
+	# find is an alias for detect.
+	proc find { list block } {
+		return [detect $list $block]
+	}
+
 	# Takes a list of Tcl dictionary objects and a key common to the keysets
 	# of all the dictionaries. Returns a list of the values of the dictionaries
 	# at the specified key.
