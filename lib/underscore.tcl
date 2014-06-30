@@ -397,7 +397,8 @@ namespace eval _ {
 	# at the specified key.
 	#
 	# If the key is not actually present in any of the dictionaries, the empty list
-	# will be returned.
+	# will be returned. Note that this works arrays as well, if the arrays are 
+	# placed into the list using 'array get'.
 	#
 	# @example
 	#   set stooges [list [dict create name moe age 40] [dict create name larry age 50] [dict create name curly age 60]]
