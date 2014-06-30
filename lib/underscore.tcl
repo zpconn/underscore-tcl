@@ -339,6 +339,15 @@ namespace eval _ {
         return $item
     }
 
+	# Splits a list into sets, grouping by the result of running each value through
+	# the iterator.
+	#
+	# The result is returned as a Tcl dictionary object, which each key corresponding
+	# to each distinct value assumed by the iterator over the provided list.
+	#
+	# @example
+	#  _::group_by [list 1.3 2.1 2.4] {{num} { return [expr {floor($num)}] } }
+	#  => 1.0 1.3 2.0 {2.1 2.4}
     proc group_by { list iterator } {
         set result [dict create]
 
