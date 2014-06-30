@@ -237,6 +237,12 @@ namespace eval _ {
         return
     }
 
+	# Executes the passed iterator on each element of the passed list.
+	# The iterator is assumed to be a predicate returning true or false.
+	#
+	# Returns a list of two lists. The first list contains those elements
+	# for which the predicate is true, the second those elements for which
+	# the predicate is false.
     proc partition { list iterator } {
         set first [set second [list]]
 
@@ -250,6 +256,14 @@ namespace eval _ {
 
         list $first $second
     }
+
+	# Executes the passed iterator on each element of the passed list.
+	# The iterator is assumed to be a predicate returning true or false.
+	#
+	# Returns a list of all elements for which the predicate is true.
+	proc filter { list iterator } {
+		return [lindex [partition $list $iterator] 0]
+	}
 
     # Executes the passed iterator with each element of the passed list.
     # Returns true if the passed block never returns a 'falsy' value.
