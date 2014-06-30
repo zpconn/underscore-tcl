@@ -226,17 +226,6 @@ namespace eval _ {
         return $memo
     }
 
-    proc find { list iterator } {
-        foreach value $list {
-            if { [_::yield $iterator $value] } {
-                return $value
-            }
-        }
-
-        # Return an empty string.
-        return
-    }
-
 	# Executes the passed iterator on each element of the passed list.
 	# The iterator is assumed to be a predicate returning true or false.
 	#
