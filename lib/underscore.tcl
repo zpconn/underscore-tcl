@@ -391,4 +391,26 @@ namespace eval _ {
             }
         }
     }
+
+	# Takes a list of Tcl dictionary objects and a key common to the keysets
+	# of all the dictionaries. Returns a list of the values of the dictionaries
+	# at the specified key.
+	#
+	# If the key is not actually present in any of the dictionaries, the empty list
+	# will be returned.
+	#
+	# @example
+	#   set stooges [list [dict create name moe age 40] [dict create name larry age 50] [dict create name curly age 60]]
+	#   _::pluck $stooges name; # => moe larry curly
+	proc pluck { list key } {
+		set result []
+
+		foreach d $list {
+			if {[dict exists $d $key]} {
+				lappend result [dict get $d $key]
+			}
+		}
+
+		return $result
+	}
 }
